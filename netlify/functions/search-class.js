@@ -1,6 +1,4 @@
-const fetch = require('node-fetch');
-
-exports.handler = async function(event, context) {
+exports.handler = async function (event, context) {
     const className = event.queryStringParameters.name;
     if (!className) {
         return {
@@ -27,7 +25,7 @@ exports.handler = async function(event, context) {
     } catch (error) {
         return {
             statusCode: 500,
-            body: JSON.stringify({ error: 'Failed to fetch from Maven Central' })
+            body: JSON.stringify({ error: 'Failed to fetch from Maven Central', details: error.message })
         };
     }
 };
